@@ -1,26 +1,44 @@
 'use client'
 
+import { useState } from 'react'
 import Hero from '@/components/Hero'
-import Sidebar from '@/components/Sidebar'
+import Blog from '@/components/Blog'
+import Projects from '@/components/Projects'
+import Art from '@/components/Art'
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState('blog')
+
   return (
     <div className="flex min-h-screen">
-      <Sidebar />
-
       <main className="flex-1 flex flex-col">
         <Hero />
         
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-12 p-8">
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Projets</h2>
-            <p className="text-sm opacity-80">Quelques projets récents...</p>
+        {/* Tabs */}
+        <div className="px-8 pt-16">
+          <div className="flex space-x-12 border-b border-[#e4e4e4]/10">
+            {['Blog', 'Projects', 'Art'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab.toLowerCase())}
+                className={`pb-4 text-lg font-light tracking-wide transition-opacity duration-300 ${
+                  activeTab === tab.toLowerCase()
+                    ? 'opacity-100 border-b-2 border-[#e4e4e4] -mb-[2px]'
+                    : 'opacity-50 hover:opacity-75'
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Art</h2>
-            <p className="text-sm opacity-80">Illustrations, 3D.</p>
-          </div>
-        </section>
+        </div>
+
+        {/* Content */}
+        <div className="px-8 py-12">
+          {activeTab === 'blog' && <Blog />}
+          {activeTab === 'projects' && <Projects />}
+          {activeTab === 'art' && <Art />}
+        </div>
       </main>
     </div>
   )
