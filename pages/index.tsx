@@ -18,7 +18,7 @@ export default function Home() {
           </div>
           <div>
             <h2 className="text-2xl font-bold mb-4">Art</h2>
-            <p className="text-sm opacity-80">Illustrations, 3D et plus.</p>
+            <p className="text-sm opacity-80">Illustrations, 3D.</p>
           </div>
         </section>
       </main>
