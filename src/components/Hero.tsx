@@ -37,6 +37,14 @@ export default function Hero() {
                   Instagram
                 </a>
                 <a 
+                  href="https://github.com/your-profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-lg font-light tracking-wide hover:opacity-50 transition-opacity duration-300 pb-2 border-b border-[#F7F6CF]/10 text-[#F7F6CF]"
+                >
+                  GitHub
+                </a>
+                <a 
                   href="mailto:your.email@example.com" 
                   className="w-full text-lg font-light tracking-wide hover:opacity-50 transition-opacity duration-300 pb-2 border-b border-[#B9CFD0]/10 text-[#B9CFD0]"
                 >
