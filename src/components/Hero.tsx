@@ -1,10 +1,10 @@
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col md:flex-row">
-      {/* Left side - Welcome text */}
-      <div className="w-full md:w-1/2 flex flex-col px-4 md:px-8 py-8 md:py-0">
-        <div className="w-full">
-          {/* Welcome text container */}
+      {/* Left side wrapper - contains both Welcome and Connect on desktop */}
+      <div className="w-full md:w-1/2 flex flex-col">
+        {/* Welcome section */}
+        <div className="px-4 md:px-8 py-8 md:py-0 order-1">
           <div className="min-h-[30vh] md:h-[50vh] flex items-center">
             <div>
               <p className="text-2xl md:text-3xl opacity-80">
@@ -20,8 +20,10 @@ export default function Hero() {
               <p className="text-[#e4e4e4]">Samy ABDELAZIM - Developer</p>
             </div>
           </div>
-          
-          {/* Connect section */}
+        </div>
+
+        {/* Connect section */}
+        <div className="px-4 md:px-8 order-3 md:order-2">
           <div className="min-h-[30vh] md:h-[50vh] flex items-start mt-8 md:mt-20">
             <div className="w-full pr-4 md:pr-8">
               <h2 className="text-xl md:text-2xl font-semibold tracking-wide mb-6 md:mb-8 text-[#e4e4e4]">Connect</h2>
@@ -74,8 +76,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Right side - Pixel Art Banner */}
-      <div className="w-full h-[30vh] md:h-auto md:w-1/2 relative">
+      {/* Banner */}
+      <div className="w-full h-[30vh] md:h-auto md:w-1/2 relative order-2 md:order-2">
         <div 
           className="absolute inset-0"
           style={{
