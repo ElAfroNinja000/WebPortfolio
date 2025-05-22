@@ -43,7 +43,7 @@ function ProjectModal({ project, onClose, onProjectClick }: ProjectModalProps) {
           <p className="text-base text-center font-light text-gray-300 leading-relaxed mb-8">{project.description}</p>
           <button
             onClick={() => onProjectClick(project.url)}
-            className="px-6 py-2 bg-[#4eb7b4] text-[#161616] rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
+            className="px-6 py-2 bg-[#e03932] text-white rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
           >
             View Project
           </button>
@@ -52,7 +52,7 @@ function ProjectModal({ project, onClose, onProjectClick }: ProjectModalProps) {
           {project.tags.map((tag, index) => (
             <span
               key={index}
-              className="px-3 py-1 text-xs font-medium rounded-full bg-[#4eb7b4] text-[#161616] whitespace-nowrap"
+              className="px-3 py-1 text-xs font-medium rounded-full bg-[#186b80] text-white whitespace-nowrap"
             >
               {tag}
             </span>
@@ -159,7 +159,7 @@ export default function Projects() {
                   {project.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-[#4eb7b4] text-[#161616] whitespace-nowrap inline-block mr-2 mb-2"
+                      className="px-3 py-1 text-xs font-medium rounded-full bg-[#186b80] text-white whitespace-nowrap inline-block mr-2 mb-2"
                     >
                       {tag}
                     </span>
