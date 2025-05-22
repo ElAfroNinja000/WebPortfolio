@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useState } from 'react'
 
 interface Project {
   id: number
@@ -7,6 +8,59 @@ interface Project {
   url: string
   description: string
   tags: string[]
+}
+
+interface ProjectModalProps {
+  project: Project | null
+  onClose: () => void
+  onProjectClick: (url: string) => void
+}
+
+function ProjectModal({ project, onClose, onProjectClick }: ProjectModalProps) {
+  if (!project) return null
+
+  return (
+    <div 
+      className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div 
+        className="relative w-full max-w-lg"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="relative aspect-square w-full">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover opacity-50"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 flex flex-col justify-center items-center p-6">
+          <h2 className="text-xl font-medium tracking-wide mb-4 text-center">{project.title}</h2>
+          <p className="text-base text-center font-light text-gray-300 leading-relaxed mb-8">{project.description}</p>
+          <button
+            onClick={() => onProjectClick(project.url)}
+            className="px-6 py-2 bg-[#4eb7b4] text-[#161616] rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            View Project
+          </button>
+        </div>
+        <div className="absolute bottom-4 left-4 flex flex-wrap gap-2 max-w-[80%]">
+          {project.tags.map((tag, index) => (
+            <span
+              key={index}
+              className="px-3 py-1 text-xs font-medium rounded-full bg-[#4eb7b4] text-[#161616] whitespace-nowrap"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
 }
 
 const PLACEHOLDER_PROJECTS: Project[] = [
@@ -61,40 +115,67 @@ const PLACEHOLDER_PROJECTS: Project[] = [
 ]
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+
+  const handleProjectClick = (project: Project, e: React.MouseEvent) => {
+    if (window.innerWidth >= 768) return
+    e.preventDefault()
+    setSelectedProject(project)
+  }
+
+  const handleModalProjectClick = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-      {PLACEHOLDER_PROJECTS.map((project) => (
-        <a
-          href={project.url}
-          key={project.id}
-          className="group relative aspect-square bg-[#1a1a1a] overflow-hidden"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 50vw, 33vw"
-          />
-          <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-300" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="text-base md:text-lg font-medium tracking-wide mb-3">{project.title}</span>
-            <p className="text-sm md:text-base text-center font-light text-gray-300 leading-relaxed">{project.description}</p>
+    <>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {PLACEHOLDER_PROJECTS.map((project) => (
+          <div
+            key={project.id}
+            className="group relative aspect-square bg-[#1a1a1a] overflow-hidden cursor-pointer"
+            onClick={(e) => handleProjectClick(project, e)}
+          >
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 50vw, 33vw"
+            />
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:block absolute inset-0"
+            >
+              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-300" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="flex flex-col items-center justify-center px-6">
+                  <span className="text-base md:text-lg font-medium tracking-wide mb-4">{project.title}</span>
+                  <p className="text-sm md:text-base text-center font-light text-gray-300 leading-relaxed">{project.description}</p>
+                </div>
+                <div className="absolute bottom-4 left-4 flex flex-wrap gap-3 max-w-[80%]">
+                  {project.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 text-xs font-medium rounded-full bg-[#4eb7b4] text-[#161616] whitespace-nowrap inline-block mr-2 mb-2"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </a>
           </div>
-          <div className="absolute bottom-4 left-4 flex flex-wrap gap-2 max-w-[80%] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {project.tags.map((tag, index) => (
-              <span
-                key={index}
-                className="px-3 py-1 text-xs font-medium rounded-full bg-[#4eb7b4] text-[#161616] whitespace-nowrap"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </a>
-      ))}
-    </div>
+        ))}
+      </div>
+
+      <ProjectModal 
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+        onProjectClick={handleModalProjectClick}
+      />
+    </>
   )
 } 
