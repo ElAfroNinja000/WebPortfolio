@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="800" fill="#161616"/>
+    <!-- Editor window -->
+    <rect x="100" y="100" width="600" height="600" rx="8" fill="#2A2A2A"/>
+    <!-- Text lines -->
+    <rect x="150" y="200" width="200" height="12" rx="2" fill="#e03932"/>
+    <rect x="150" y="240" width="500" height="8" rx="2" fill="#666666"/>
+    <rect x="150" y="270" width="450" height="8" rx="2" fill="#666666"/>
+    <rect x="150" y="300" width="480" height="8" rx="2" fill="#666666"/>
+    <!-- AI suggestion -->
+    <rect x="150" y="350" width="200" height="12" rx="2" fill="#4eb7b4"/>
+    <rect x="150" y="390" width="500" height="8" rx="2" fill="#444444"/>
+    <rect x="150" y="420" width="470" height="8" rx="2" fill="#444444"/>
+    <rect x="150" y="450" width="490" height="8" rx="2" fill="#444444"/>
+    <!-- Cursor -->
+    <rect x="150" y="480" width="2" height="16" fill="#e4e4e4"/>
+</svg> 

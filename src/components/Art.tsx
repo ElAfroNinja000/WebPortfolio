@@ -58,85 +58,85 @@ const PLACEHOLDER_ART: ArtPiece[] = [
   {
     id: 1,
     title: "Tormented",
-    image: "/images/display/tormented.jpg",
+    image: "/images/arts/tormented.jpg",
     type: "Digital Art/Glitch Art"
   },
   {
     id: 2,
     title: "Vapor Space",
-    image: "/images/display/vaporspace.jpg",
+    image: "/images/arts/vaporspace.jpg",
     type: "3D Render"
   },
   {
     id: 3,
     title: "Devotion",
-    image: "/images/display/devotion.jpg",
+    image: "/images/arts/devotion.jpg",
     type: "Digital Art/Glitch Art"
   },
   {
     id: 4,
     title: "Diamonds",
-    image: "/images/display/to_the_beginning.jpg",
+    image: "/images/arts/to_the_beginning.jpg",
     type: "3D Render"
   },
   {
     id: 5,
     title: "Hidden Cave",
-    image: "/images/display/shrooms.jpg",
+    image: "/images/arts/shrooms.jpg",
     type: "3D Render"
   },
   {
     id: 6,
     title: "Senses Shatterer",
-    image: "/images/display/senses_shatterer.jpg",
+    image: "/images/arts/senses_shatterer.jpg",
     type: "Digital Art/Glitch Art"
   },
   {
     id: 7,
     title: "Dimensional Lift Off",
-    image: "/images/display/dimensional_lift_off.jpg",
+    image: "/images/arts/dimensional_lift_off.jpg",
     type: "3D Render"
   },
   {
     id: 8,
     title: "Time Leap",
-    image: "/images/display/time_leap.jpg",
+    image: "/images/arts/time_leap.jpg",
     type: "Digital Art/Glitch Art"
   },
   {
     id: 9,
     title: "Neon Sunset",
-    image: "/images/display/neon_sunset.jpg",
+    image: "/images/arts/neon_sunset.jpg",
     type: "3D Render"
   },
   {
     id: 10,
     title: "Silence",
-    image: "/images/display/silence.jpg",
+    image: "/images/arts/silence.jpg",
     type: "Digital Art/Glitch Art"
   },
   {
     id: 11,
     title: "Thinking Of You",
-    image: "/images/display/thinking_of_you.jpg",
+    image: "/images/arts/thinking_of_you.jpg",
     type: "3D Render"
   },
   {
     id: 12,
     title: "Face To Face",
-    image: "/images/display/face_to_face.jpg",
+    image: "/images/arts/face_to_face.jpg",
     type: "Digital Art/Glitch Art"
   },
   {
     id: 13,
     title: "Vapor Space 2",
-    image: "/images/display/vaporspace_2.jpg",
+    image: "/images/arts/vaporspace_2.jpg",
     type: "3D Render"
   },
   {
     id: 14,
     title: "Rebirth",
-    image: "/images/display/rebirth.jpg",
+    image: "/images/arts/rebirth.jpg",
     type: "Digital Art/Glitch Art"
   }
 ]

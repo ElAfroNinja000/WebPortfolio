@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="800" fill="#161616"/>
+    <!-- 3D Viewport -->
+    <rect x="50" y="50" width="500" height="500" rx="8" fill="#2A2A2A"/>
+    <!-- Grid -->
+    <path d="M100 100 H500 M100 200 H500 M100 300 H500 M100 400 H500" stroke="#333" stroke-width="1"/>
+    <path d="M100 100 V500 M200 100 V500 M300 100 V500 M400 100 V500" stroke="#333" stroke-width="1"/>
+    <!-- 3D Cube -->
+    <path d="M200 200 L400 200 L400 400 L200 400 Z" stroke="#186b80" stroke-width="2" fill="none"/>
+    <path d="M250 150 L450 150 L450 350 L400 400" stroke="#186b80" stroke-width="2" fill="none"/>
+    <path d="M200 200 L250 150" stroke="#186b80" stroke-width="2"/>
+    <path d="M400 200 L450 150" stroke="#186b80" stroke-width="2"/>
+    <!-- Script Panel -->
+    <rect x="580" y="50" width="170" height="500" rx="8" fill="#2A2A2A"/>
+    <!-- Script Lines -->
+    <rect x="600" y="80" width="130" height="8" rx="2" fill="#efb023"/>
+    <rect x="600" y="100" width="100" height="8" rx="2" fill="#666"/>
+    <rect x="600" y="120" width="110" height="8" rx="2" fill="#666"/>
+    <rect x="600" y="160" width="130" height="8" rx="2" fill="#efb023"/>
+    <rect x="600" y="180" width="90" height="8" rx="2" fill="#666"/>
+    <rect x="600" y="200" width="120" height="8" rx="2" fill="#666"/>
+    <!-- Tools Panel -->
+    <rect x="50" y="580" width="700" height="100" rx="8" fill="#2A2A2A"/>
+    <circle cx="100" cy="630" r="15" fill="#4eb7b4"/>
+    <circle cx="150" cy="630" r="15" fill="#e03932"/>
+    <circle cx="200" cy="630" r="15" fill="#186b80"/>
+</svg> 
