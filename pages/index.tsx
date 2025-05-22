@@ -2,12 +2,11 @@
 
 import { useState } from 'react'
 import Hero from '@/components/Hero'
-import Blog from '@/components/Blog'
 import Projects from '@/components/Projects'
 import Art from '@/components/Art'
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('blog')
+  const [activeTab, setActiveTab] = useState('projects')
 
   return (
     <div className="flex min-h-screen">
@@ -17,7 +16,7 @@ export default function Home() {
         {/* Tabs */}
         <div className="px-8 pt-16">
           <div className="flex space-x-12 border-b border-[#e4e4e4]/10">
-            {['Blog', 'Projects', 'Art'].map((tab) => (
+            {['Projects', 'Art'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab.toLowerCase())}
@@ -35,7 +34,6 @@ export default function Home() {
 
         {/* Content */}
         <div className="px-8 py-12">
-          {activeTab === 'blog' && <Blog />}
           {activeTab === 'projects' && <Projects />}
           {activeTab === 'art' && <Art />}
         </div>

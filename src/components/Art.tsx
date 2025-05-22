@@ -1,3 +1,6 @@
+import Image from 'next/image'
+import { useState } from 'react'
+
 interface ArtPiece {
   id: number
   title: string
@@ -5,75 +8,171 @@ interface ArtPiece {
   type: string
 }
 
+interface ModalProps {
+  piece: ArtPiece | null
+  onClose: () => void
+}
+
+function Modal({ piece, onClose }: ModalProps) {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  
+  if (!piece) return null
+
+  return (
+    <div 
+      className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div 
+        className="relative"
+        style={{
+          width: dimensions.width ? Math.min(dimensions.width, window.innerWidth - 32) : 'auto',
+          height: dimensions.height ? Math.min(dimensions.height, window.innerHeight - 32) : 'auto'
+        }}
+        onClick={e => e.stopPropagation()}
+      >
+        <Image
+          src={piece.image}
+          alt={piece.title}
+          fill
+          className="object-contain"
+          sizes="100vw"
+          priority
+          onLoadingComplete={(target) => {
+            setDimensions({
+              width: target.naturalWidth,
+              height: target.naturalHeight
+            })
+          }}
+        />
+        <div className="absolute bottom-0 left-0 right-0 p-4 text-center bg-black/50 backdrop-blur-sm">
+          <h2 className="text-xl font-light tracking-wide">{piece.title}</h2>
+          <p className="text-sm opacity-70 mt-1">{piece.type}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const PLACEHOLDER_ART: ArtPiece[] = [
   {
     id: 1,
-    title: "Abstract Composition",
-    image: "/images/art1.jpg",
-    type: "Digital Art"
+    title: "Tormented",
+    image: "/images/display/tormented.jpg",
+    type: "Digital Art/Glitch Art"
   },
   {
     id: 2,
-    title: "Geometric Study",
-    image: "/images/art2.jpg",
+    title: "Vapor Space",
+    image: "/images/display/vaporspace.jpg",
     type: "3D Render"
   },
   {
     id: 3,
-    title: "Color Exploration",
-    image: "/images/art3.jpg",
-    type: "Digital Painting"
+    title: "Devotion",
+    image: "/images/display/devotion.jpg",
+    type: "Digital Art/Glitch Art"
   },
   {
     id: 4,
-    title: "Pattern Series",
-    image: "/images/art4.jpg",
-    type: "Vector Art"
+    title: "Diamonds",
+    image: "/images/display/to_the_beginning.jpg",
+    type: "3D Render"
   },
   {
     id: 5,
-    title: "Light Study",
-    image: "/images/art5.jpg",
+    title: "Hidden Cave",
+    image: "/images/display/shrooms.jpg",
     type: "3D Render"
   },
   {
     id: 6,
-    title: "Texture Experiment",
-    image: "/images/art6.jpg",
-    type: "Mixed Media"
+    title: "Senses Shatterer",
+    image: "/images/display/senses_shatterer.jpg",
+    type: "Digital Art/Glitch Art"
   },
   {
     id: 7,
-    title: "Form Study",
-    image: "/images/art7.jpg",
-    type: "Digital Art"
+    title: "Dimensional Lift Off",
+    image: "/images/display/dimensional_lift_off.jpg",
+    type: "3D Render"
   },
   {
     id: 8,
-    title: "Motion Exploration",
-    image: "/images/art8.jpg",
-    type: "Animation"
+    title: "Time Leap",
+    image: "/images/display/time_leap.jpg",
+    type: "Digital Art/Glitch Art"
+  },
+  {
+    id: 9,
+    title: "Neon Sunset",
+    image: "/images/display/neon_sunset.jpg",
+    type: "3D Render"
+  },
+  {
+    id: 10,
+    title: "Silence",
+    image: "/images/display/silence.jpg",
+    type: "Digital Art/Glitch Art"
+  },
+  {
+    id: 11,
+    title: "Thinking Of You",
+    image: "/images/display/thinking_of_you.jpg",
+    type: "3D Render"
+  },
+  {
+    id: 12,
+    title: "Face To Face",
+    image: "/images/display/face_to_face.jpg",
+    type: "Digital Art/Glitch Art"
+  },
+  {
+    id: 13,
+    title: "Vapor Space 2",
+    image: "/images/display/vaporspace_2.jpg",
+    type: "3D Render"
+  },
+  {
+    id: 14,
+    title: "Rebirth",
+    image: "/images/display/rebirth.jpg",
+    type: "Digital Art/Glitch Art"
   }
 ]
 
 export default function Art() {
+  const [selectedPiece, setSelectedPiece] = useState<ArtPiece | null>(null)
+
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {PLACEHOLDER_ART.map((piece) => (
-        <button
-          key={piece.id}
-          className="group relative aspect-square bg-[#1a1a1a] overflow-hidden"
-        >
-          <div className="absolute inset-0 flex items-center justify-center text-sm opacity-50">
-            [Art Image]
-          </div>
-          <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="text-sm font-light tracking-wide mb-1">{piece.title}</span>
-            <span className="text-xs opacity-50">{piece.type}</span>
-          </div>
-        </button>
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {PLACEHOLDER_ART.map((piece) => (
+          <button
+            key={piece.id}
+            className="group relative aspect-square bg-[#1a1a1a] overflow-hidden"
+            onClick={() => setSelectedPiece(piece)}
+          >
+            <Image
+              src={piece.image}
+              alt={piece.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 50vw, 25vw"
+            />
+            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="text-sm font-light tracking-wide mb-1">{piece.title}</span>
+              <span className="text-xs opacity-50">{piece.type}</span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      <Modal 
+        piece={selectedPiece} 
+        onClose={() => setSelectedPiece(null)} 
+      />
+    </>
   )
 } 
