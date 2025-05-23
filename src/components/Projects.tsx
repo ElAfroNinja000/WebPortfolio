@@ -98,7 +98,7 @@ const PLACEHOLDER_PROJECTS: Project[] = [
   },
   {
     id: 5,
-    title: "Blender Setup Script",
+    title: "Blender Automation Scripts",
     image: "/images/projects/blender_setup.svg",
     url: "https://github.com/ElAfroNinja000/Blender_Scripts",
     description: "[WIP] A collection of scripts that I have used to setup my Blender projects.",
