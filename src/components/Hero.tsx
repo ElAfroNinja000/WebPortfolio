@@ -17,7 +17,7 @@ export default function Hero() {
                 <span className="text-[#efb023]"> innovation meets purpose. </span>
               </p>
               <br />
-              <p className="text-[#e4e4e4]"><strong>Samy ABDELAZIM</strong> - Developer</p>
+              <p className="text-[#848484]"><strong>Samy ABDELAZIM</strong> - Developer</p>
             </div>
           </div>
         </div>
